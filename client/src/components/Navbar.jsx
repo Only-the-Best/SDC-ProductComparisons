@@ -17,12 +17,12 @@ class Navbar extends React.Component {
     const protocol = window.location.protocol;
     const hostname = window.location.hostname;
     const pathname = window.location.pathname;
-    let port = window.location.port;
+    const port = window.location.port;
 
     if (port !== "") {
-      window.location.href = `${protocol}//${hostname}:${port}/product/${input}`
+      window.location.href = `${protocol}//${hostname}:${port}/product/${input}`;
     } else {
-      window.location.href = `${protocol}//${hostname}/product/${input}`
+      window.location.href = `${protocol}//${hostname}/product/${input}`;
     }
   }
 

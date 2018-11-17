@@ -1,0 +1,107 @@
+const campTitleOptions1 = [
+  "REI",
+  "REI Co-op",
+  "Marmot",
+  "Mountain",
+  "Kelty",
+  "Tepui",
+  "Alps",
+  "Himalayan",
+  "Andes",
+  "Karakoram",
+  "Pyrenees",
+  "Sierra",
+  "Tian Shan",
+  "Ural",
+  "Cascade",
+  "Pamir",
+  "Alaska",
+  "Atlas",
+  "Uinta",
+  "Teton",
+  "Sawatch",
+  "Blue Ridge",
+  "Absaroka",
+  "Transantarctic",
+  "Big Agnes"
+];
+
+const campTitleOptions2 = [
+  "Limestone",
+  "Kingdom",
+  "Silhouette",
+  "Nature",
+  "Dome",
+  "Hut",
+  "Cabin",
+  "Lair",
+  "Quartz",
+  "Diamond",
+  "Jade",
+  "Howlite",
+  "Trailblazer",
+  "Obsidian",
+  "Coleman",
+  "Vango",
+  "Outwell",
+  "Cabella",
+  "Columbia",
+  "Castle",
+  "Fortress",
+  "Utopia",
+  "Safe Haven"
+];
+
+const shirtTitleOptions1 = [
+  "Intrepid",
+  "Sahara",
+  "Stealth",
+  "Bermuda",
+  "Backwoods",
+  "Patagonia",
+  "Bermuda",
+  "Balanced",
+  "All Around",
+  "Silver Woods",
+  "Bronze Ridge",
+  "Skyline",
+  "Shattered",
+  "Avant",
+  "REI Co-op",
+  "Bernal",
+  "Nine Trails",
+  "Lybek",
+  "Recycled",
+  "Columbia",
+  "Active",
+  "True Crew",
+  "Ollivanders"
+];
+
+const shirtTitleOptions2 = [
+  "Heathered",
+  "Mountain",
+  "Sweat-Resistant",
+  "Weatherproof",
+  "Sierra Collection",
+  "Lightweight",
+  "Tamiami",
+  "Henley",
+  "High Movement",
+  "Element",
+  "Breathable",
+  "Dry",
+  "Arcteryx",
+  "Middle-Earth",
+  "Asgard",
+  "Atlantis",
+  "Gotham",
+  "Ole",
+  "Trademark",
+  "Mithril"
+];
+
+module.exports.campTitleOptions1 = campTitleOptions1;
+module.exports.campTitleOptions2 = campTitleOptions2;
+module.exports.shirtTitleOptions1 = shirtTitleOptions1;
+module.exports.shirtTitleOptions2 = shirtTitleOptions2;
