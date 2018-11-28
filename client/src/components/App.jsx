@@ -2,7 +2,7 @@ import React from "react";
 // import PeopleAlsoViewed from './peopleAlsoViewed.jsx';
 // import CompareAtGlance from './compareAtGlance.jsx';
 import Tents from "./Tents";
-import Shirts from "./Shirts";
+// import Shirts from "./Shirts";
 import "unfetch/polyfill"; // This is required for jest tests. Node does not understand the fetch method until you download npm unfetch.
 
 export default class App extends React.Component {
@@ -10,8 +10,7 @@ export default class App extends React.Component {
     super();
     this.state = {
       currentItem: false,
-      tents: false,
-      shirts: false
+      tents: false
     };
 
     this.updateState = this.updateState.bind(this);
@@ -25,31 +24,29 @@ export default class App extends React.Component {
     }
 
     this.getTentData(this.updateState);
-    this.getShirtData(this.updateState);
+    // this.getShirtData(this.updateState);
   }
 
   getCurrentItem(cb, id) {
-    fetch(
-      `http://trailblazer-pc.us-east-2.elasticbeanstalk.com/product/data/${id}`
-    )
+    fetch(`http://localhost:8081/product/data/${id}`)
       .then(res => res.json())
       .then(data => cb("currentItem", data))
       .catch(error => console.error(error));
   }
 
   getTentData(cb) {
-    fetch("http://trailblazer-pc.us-east-2.elasticbeanstalk.com/data/tents")
+    fetch("http://localhost:8081/data/tents")
       .then(res => res.json())
       .then(data => cb("tents", data))
       .catch(error => console.error(error));
   }
 
-  getShirtData(cb) {
-    fetch("http://trailblazer-pc.us-east-2.elasticbeanstalk.com/data/shirts")
-      .then(res => res.json())
-      .then(data => cb("shirts", data))
-      .catch(error => console.error(error));
-  }
+  // getShirtData(cb) {
+  //   fetch("http://trailblazer-pc.us-east-2.elasticbeanstalk.com/data/shirts")
+  //     .then(res => res.json())
+  //     .then(data => cb("shirts", data))
+  //     .catch(error => console.error(error));
+  // }
 
   updateState(prop, value) {
     this.setState({
@@ -58,10 +55,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { currentItem, tents, shirts } = this.state;
+    const { currentItem, tents } = this.state;
     let display;
     if (currentItem) {
-      if (currentItem[0].productType === "Tent") {
+      console.log(currentItem);
+      // console.log(currentItem.producttype);
+      // console.log(currentItem, tents, shirts);
+      if (currentItem.producttype === "Tent") {
         display = (
           <Tents
             tents={tents}
@@ -69,14 +69,9 @@ export default class App extends React.Component {
             updateState={this.updateState}
           />
         );
-      } else {
-        display = <Shirts shirts={shirts} />;
       }
-    } else {
-      display = <Shirts shirts={shirts} />;
     }
-
-    return !tents || !shirts ? (
+    return !tents ? (
       <div className="centered">Loading...:D</div>
     ) : (
       <div>{display}</div>

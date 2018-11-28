@@ -12,7 +12,7 @@ const CompareAtGlance = ({ item, linkText }) => {
     }
     return `${protocol}//${hostname}/product/${item}`;
   };
-
+  console.log('item.ranking:', item.ranking);
   return !item ? (
     <div>please wait</div>
   ) : (
