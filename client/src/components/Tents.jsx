@@ -3,41 +3,42 @@ import PeopleAlsoViewed from "./PeopleAlsoViewed";
 import CompareAtGlance from "./CompareAtGlance";
 
 const Tents = ({ tents, current, updateState }) => {
-  console.log('tents is', tents);
+  console.log('current', current)
+  console.log('tents', tents)
   return (
-    <div>
-      <div className="container">
-        <div className="titleContainer">
-          <h3>People also viewed</h3>
+  <div>
+    <div className="container">
+      <div className="titleContainer">
+        <h3>People also viewed</h3>
+      </div>
+      <div className="pplViewedContainer" data-test="dt-comp-people">
+        {tents.slice(0, 4).map(item => (
+          <PeopleAlsoViewed key={item.id} item={item} />
+        ))}
+      </div>
+    </div>
+    <div className="container">
+      <div className="titleContainer">
+        <h3>Compare at a glance</h3>
+      </div>
+      <div className="compare-at-glance__container">
+        <div className="compare-at-glance__current">
+          <CompareAtGlance linkText="Buy Now" item={current} />
         </div>
-        <div className="pplViewedContainer" data-test="dt-comp-people">
-            {tents.slice(0, 4).map(item => (
-            <PeopleAlsoViewed key={item.id} item={item} />
+        <div className="compare-at-glance__suggestions">
+          {tents.map(item => (
+            <CompareAtGlance
+              linkText="View Now"
+              key={item.id}
+              item={item}
+              updateState={updateState}
+            />
           ))}
         </div>
       </div>
-      <div className="container">
-        <div className="titleContainer">
-          <h3>Compare at a glance</h3>
-        </div>
-        <div className="compare-at-glance__container">
-          <div className="compare-at-glance__current">
-            <CompareAtGlance linkText="Buy Now" item={current[0]} />
-          </div>
-          <div className="compare-at-glance__suggestions">
-            {tents.map(item => (
-              <CompareAtGlance
-                linkText="View Now"
-                key={item.id}
-                item={item}
-                updateState={updateState}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
-  );
+  </div>
+  )
 };
 
 export default Tents;

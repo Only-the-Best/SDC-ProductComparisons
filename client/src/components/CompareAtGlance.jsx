@@ -2,6 +2,7 @@ import React from "react";
 import StarRating from "react-star-ratings";
 
 const CompareAtGlance = ({ item, linkText }) => {
+  console.log('item', item)
   const getLink = item => {
     const protocol = window.location.protocol;
     const hostname = window.location.hostname;
@@ -12,20 +13,19 @@ const CompareAtGlance = ({ item, linkText }) => {
     }
     return `${protocol}//${hostname}/product/${item}`;
   };
-  console.log('item.ranking:', item.ranking);
   return !item ? (
     <div>please wait</div>
   ) : (
     <div className="cag__item">
-      <a href={getLink(item._id)}>
-        <img className="imgReducedSize" src={item.imageURL} alt="Product" />
+      <a href={getLink(item.id)}>
+        <img className="imgReducedSize" src={item.image} alt="Product" />
       </a>
       <div className="cag__item__main-info text-center">
         <p className="roboto-C cag__item__main-info__name">{item.title}</p>
         <div>
           <StarRating
             numberOfStars={5}
-            rating={item.ranking}
+            rating={Number(item.ranking)}
             starRatedColor="#BD5A0E"
             starDimension="15px"
             starSpacing="3px"
@@ -35,30 +35,30 @@ const CompareAtGlance = ({ item, linkText }) => {
         <p className="roboto" data-price="dt-price">
           ${item.price}
         </p>
-        <a className="cag__link" href={getLink(item._id)}>
+        <a className="cag__link" href={getLink(item.id)}>
           {linkText}
         </a>
       </div>
 
       <div className="cag__info-group">
         <p className="cag__info-group__title">Sleeping Capacity</p>
-        <p className="cag__info-group__info">{item.sleepingCapacity}</p>
+        <p className="cag__info-group__info">{item.sleeping_capacity}</p>
       </div>
       <div className="cag__info-group">
         <p className="cag__info-group__title">Packaged Weight</p>
-        <p className="cag__info-group__info">{item.packagedWeight}</p>
+        <p className="cag__info-group__info">{item.packaged_weight}</p>
       </div>
       <div className="cag__info-group">
         <p className="cag__info-group__title">Number of Doors</p>
         <p className="cag__info-group__info">
-          {item.numberOfDoors > 1
-            ? `${item.numberOfDoors} doors`
-            : `${item.numberOfDoors} door`}
+          {item.numberofdoors > 1
+            ? `${item.numberofdoors} doors`
+            : `${item.numberofdoors} door`}
         </p>
       </div>
       <div className="cag__info-group">
         <p className="cag__info-group__title">Best Use</p>
-        <p className="cag__info-group__info">{item.bestUse}</p>
+        <p className="cag__info-group__info">{item.bestuse}</p>
       </div>
     </div>
   );

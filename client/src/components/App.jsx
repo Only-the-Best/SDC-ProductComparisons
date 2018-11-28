@@ -19,7 +19,7 @@ export default class App extends React.Component {
   componentDidMount() {
     const url = window.location.href.split("/");
     const id = +url[url.length - 1];
-    if (!isNaN(id) && id !== 0 && id < 103) {
+    if (!isNaN(id) && id !== 0 && id < 10000002) {
       this.getCurrentItem(this.updateState, id);
     }
 
@@ -28,14 +28,14 @@ export default class App extends React.Component {
   }
 
   getCurrentItem(cb, id) {
-    fetch(`http://localhost:8081/product/data/${id}`)
+    fetch(`http://localhost:8082/product/data/${id}`)
       .then(res => res.json())
       .then(data => cb("currentItem", data))
       .catch(error => console.error(error));
   }
 
   getTentData(cb) {
-    fetch("http://localhost:8081/data/tents")
+    fetch("http://localhost:8082/data/tents")
       .then(res => res.json())
       .then(data => cb("tents", data))
       .catch(error => console.error(error));
@@ -60,7 +60,7 @@ export default class App extends React.Component {
     if (currentItem) {
       console.log(currentItem);
       // console.log(currentItem.producttype);
-      // console.log(currentItem, tents, shirts);
+      console.log('currentItem', currentItem, 'tents', tents);
       if (currentItem.producttype === "Tent") {
         display = (
           <Tents

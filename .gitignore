@@ -7,3 +7,6 @@ data/
 data.csv
 
 newrelic.js
+
+code*
+!/.gitignore
