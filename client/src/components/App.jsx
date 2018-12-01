@@ -58,9 +58,6 @@ export default class App extends React.Component {
     const { currentItem, tents } = this.state;
     let display;
     if (currentItem) {
-      console.log(currentItem);
-      // console.log(currentItem.producttype);
-      console.log('currentItem', currentItem, 'tents', tents);
       if (currentItem.producttype === "Tent") {
         display = (
           <Tents

@@ -104,7 +104,7 @@ const startTime = new Date();
 
 const generateCSVFile = async () => {
   // console.time("Start generating data");
-  const csvStream = csv.createWriteStream({ headers: true, objectMode: true });
+  const csvStream = csv.createWriteStream({ headers: false, objectMode: true });
   const writableStream = fs.createWriteStream("db/data/data.csv");
   writableStream.on("finish", () => {
     console.time("Generated CSV file");
